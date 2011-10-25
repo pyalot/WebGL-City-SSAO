@@ -1,0 +1,128 @@
+/*
+    :copyright: 2011 by Florian Boesch <pyalot@gmail.com>.
+    :license: GNU AGPL3, see LICENSE for more details.
+*/
+
+canvas, div{
+    padding: 0px;
+    margin: 0px;
+}
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    font-family: sans-serif;
+    color: #ddd;
+    font-size: 11px;
+    background-color: #111;
+}
+
+canvas{
+    background-color: #ddd;
+}
+
+div.error{
+    width: 480px;
+    height: 480px;
+    padding: 10px;
+    background-color: #ddd;
+    color: black;
+}
+
+td{
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*
+div.node{
+    border-width: 12px 12px 12px 12px;
+    border-image: url("node_bg.png") 12 12 12 12 stretch stretch;
+    -webkit-border-image: url("node_bg.png") 12 12 12 12 stretch stretch;
+    -moz-border-image: url("node_bg.png") 12 12 12 12 stretch stretch;
+}
+*/
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.tree{
+    width: 1019px;
+    height: 280px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    font-weight: bold;
+    background-image: url("panel_bg.png");
+    background-repeat: repeat-x;
+}
+
+div.content{
+    width: 1374px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.left{
+    float: left;
+    width: 1024px;
+}
+
+div.right{
+    float: right;
+    width: 350px;
+    background-color: #333;
+    height: 964px;
+}
+
+#status{
+    text-align: center;
+    background-color: #555;
+    padding-top: 5px;
+}
+
+canvas.graph{
+    border: 1px solid black;
+}
+
+h1{
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 5px;
+    
+    font-size: 16px;
+    text-align: center;
+    text-shadow: #111 1px 1px 4px;
+}
+
+#gauge{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+}
+
+#properties{
+    padding: 10px;
+}
+
+div.hslider{
+    width: 150px;
+    font-size: 8px;
+    display: inline-block;
+}
+
+div.field{
+    padding-top: 5px;
+}
+
+div.field label.desc{
+    display: inline-block;
+    font-size: 14px;
+    width: 100px;
+    text-shadow: #111 1px 1px 4px;
+}

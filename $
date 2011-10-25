@@ -1,0 +1,62 @@
+scene = {
+    root: 'scene',
+    simple: 'simple.shader',
+    city: 'city.vbo',
+    //city: 'cityscape.vbo',
+    init: function(glee, params){
+        var self = this;
+
+        this.sky = params.sky;
+        
+        var samples = [];
+        while(samples.length < 16){
+            var x = (Math.random()-0.5)*2.0;
+            var y = (Math.random()-0.5)*2.0;
+            var z = (Math.random()-0.5)*2.0;
+            var l = Math.sqrt(x*x+y*y+z*z);
+            if(l < 1.0 && l > 0.1){
+                samples.push(x, y, z);
+            }
+        }
+
+        this.processor = new glee.Processor({
+            clear: {
+                depth: 1,
+            },
+            shader: this.simple,
+            uniforms: {
+                view: params.view.matrix,
+                view_rot: params.view.rot,
+                proj: params.proj.matrix,
+                lightdir: new glee.Vec3(0.5, 1.0, 0.2).normalize(),
+                near: params.proj.near,
+                far: params.proj.far,
+                shadow_near: params.shadow.proj.near,
+                shadow_far: params.shadow.proj.far,
+                shadow_view: shadow.view,
+                shadow_proj: params.shadow.proj.matrix,
+            },
+            uniform3f: {
+                samples: samples,
+            },
+            samplers: {
+                diffuse: params.sky.diffuse.result,
+                occlusionmap: params.occlusion,
+                shadowmap: params.shadow.result,
+            },
+            draw: function(){
+                self.city.draw();
+            },
+            depth: {
+                test: 'Less',
+                write: true,
+            }
+        });
+    },
+    set_occlusion: function(occlusion){
+        this.processor.samplers.occlusionmap = occlusion;
+    },
+    render: function(){
+        this.processor.render();
+    }
+}

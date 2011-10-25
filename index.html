@@ -1,0 +1,126 @@
+<!doctype html>
+<!--
+    :copyright: 2011 by Florian Boesch <pyalot@gmail.com>.
+    :license: GNU AGPL3, see LICENSE for more details.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="jquery/css/ui-darkness/jquery-ui-1.8.11.custom.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+
+        <script type="text/javascript" src="jquery/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="jquery/js/jquery-ui-1.8.11.custom.min.js"></script>
+        <script type="text/javascript" src="jquery/jquery.cookie.js"></script>
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">google.load('visualization', '1', {packages:['gauge']});</script>
+
+        <!-- glee -->
+        <script type="text/javascript" src="glee/glee.js"></script>
+        <script type="text/javascript" src="glee/matrix.js"></script>
+        <script type="text/javascript" src="glee/vector.js"></script>
+        <script type="text/javascript" src="glee/cube.js"></script>
+        <script type="text/javascript" src="glee/sphere.js"></script>
+        <script type="text/javascript" src="glee/plane.js"></script>
+        <script type="text/javascript" src="glee/shader.js"></script>
+        <script type="text/javascript" src="glee/vbo.js"></script>
+        <script type="text/javascript" src="glee/model.js"></script>
+        <script type="text/javascript" src="glee/resources.js"></script>
+        <script type="text/javascript" src="glee/schedule.js"></script>
+        <script type="text/javascript" src="glee/clock.js"></script>
+        <script type="text/javascript" src="glee/texture.js"></script>
+        <script type="text/javascript" src="glee/cubemap.js"></script>
+        <script type="text/javascript" src="glee/renderbuffer.js"></script>
+        <script type="text/javascript" src="glee/fbo.js"></script>
+        <script type="text/javascript" src="glee/processor.js"></script>
+        <script type="text/javascript" src="glee/error.js"></script>
+        <script type="text/javascript" src="glee/keys.js"></script>
+        <script type="text/javascript" src="glee/viewpoint.js"></script>
+        <script type="text/javascript" src="glee/picks.js"></script>
+
+        <!-- app -->
+        <script type="text/javascript" src="census.js"></script>
+        <script type="text/javascript" src="util.js"></script>
+        <script type="text/javascript" src="sky/sky.js"></script>
+        <script type="text/javascript" src="normaldepth/normaldepth.js"></script>
+        <script type="text/javascript" src="mix/mix.js"></script>
+        <script type="text/javascript" src="ssao/ssao.js"></script>
+        <script type="text/javascript" src="blur/blur.js"></script>
+        <script type="text/javascript" src="statistic.js"></script>
+        <script type="text/javascript" src="scene/scene.js"></script>
+        <script type="text/javascript" src="shadow/shadow.js"></script>
+        <script type="text/javascript" src="graph.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="left">
+                <canvas class="demo" width="1024" height="640"></canvas>
+                <div class="tree">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="node">
+                                    <input type="checkbox" id="enable-ssao1" name="enable"><label for="enable-ssao1">SSAO 1</label>
+                                    <input type="radio" id="edit-ssao1" value="ssao1" name="edit"><label for="edit-ssao1">Properties</label>
+                                    <input type="radio" id="view-ssao1" name="view"><label for="view-ssao1">View</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="down"><img src="down.png"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="node">
+                                    <input checked="checked" type="radio" value="avg" id="avg-combine" name="combine"><label for="avg-combine">Avg</label>
+                                    <input type="radio" id="min-combine" value="min" name="combine"><label for="min-combine">Min</label>
+                                    <input type="radio" id="max-combine" value="max" name="combine"><label for="max-combine">Max</label>
+                                    <input type="radio" id="top-combine" value="top" name="combine"><label for="top-combine">Top</label>
+                                    <input type="radio" id="bot-combine" value="bot" name="combine"><label for="bot-combine">Bot</label>
+                                    <input type="radio" id="mul-combine" value="mul" name="combine"><label for="mul-combine">Mul</label>
+                                    <input type="radio" id="view-combine" name="view"><label for="view-combine">View</label>
+                                </div>
+                            </td>
+                            <td class="right"><img src="right.png"></td>
+                            <td>
+                                <div class="node">
+                                    <input type="checkbox" id="enable-blur3" name="enable"><label for="enable-blur3">Blur</label>
+                                    <input type="radio" id="edit-blur3" value="blur3" name="edit"><label for="edit-blur3">Properties</label>
+                                    <input type="radio" id="view-blur3" name="view"><label for="view-blur3">View</label>
+                                </div>
+                            </td>
+                            <td class="right"><img src="right.png"></td>
+                            <td>
+                                <div class="node">
+                                    <input checked="checked" type="radio" id="edit-scene" value="scene" name="edit"><label for="edit-scene">Scene</label>
+                                    <input checked="checked" type="radio" id="view-scene" name="view"><label for="view-scene">View</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="up"/><img src="up.png"><td/>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="node">
+                                    <input type="checkbox" id="enable-ssao2" name="enable"><label for="enable-ssao2">SSAO 2</label>
+                                    <input type="radio" id="edit-ssao2" value="ssao2" name="edit"><label for="edit-ssao2">Properties</label>
+                                    <input type="radio" id="view-ssao2" name="view"><label for="view-ssao2">View</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="right">
+                <div id="status">
+                    <h1>Performance</h1>
+                    <div id="gauge"></div>
+                    <canvas width="150" height="120" class="graph"></canvas>
+                </div>
+                <div id="properties"></div>
+            </div>
+        </div>
+    </body>
+</html>
