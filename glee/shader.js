@@ -33,10 +33,8 @@ Glee.extensions.push(function(glee){
             var params = params || {};
             var directives = [
                 '#version 100',
+                'precision highp int;',
                 'precision highp float;',
-                'precision highp vec2;',
-                'precision highp vec3;',
-                'precision highp vec4;'
             ];
 
             for(i in (params.defines || [])){
